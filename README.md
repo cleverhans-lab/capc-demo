@@ -10,12 +10,48 @@ public keys for an additive homomorphic encryption scheme and sends the public
 key to all collaborating parties. Once a party identifies a query they would
 like a label for, they initiate the collaboration protocol.
 
+## he-transformer 
 The code is based on the he-transformer library.
 
 Install he_transformer from here: https://github.com/IntelAI/he-transformer. We
 use the ubuntu 18.04 version.
 
-First, install the crypto packages.
+We packed the he-transformer to a single docker container. You should be able to download he-transformer from docker hub with version3: 
+```docker pull adziedzi/he-transformer:version3```
+
+Then run the container: 
+```docker run -it adziedzi/he-transformer:version3```
+
+Go to the container. Run: 
+```source ~./profile```
+
+Next, we check if he-transformer was installed correctly.
+
+Run tmux: 
+```tmux a -t he-transformer```
+
+If the above tmux session is not present then create a new one:
+```tmux new -s he-transformer```
+
+You should see (or create) two panes and then execute [a simple example from he-transformer library](https://github.com/IntelAI/he-transformer/tree/master/examples#client-server-model).
+
+For a simple demonstration of a server-client approach, run the server in the first pane:
+```
+python $HE_TRANSFORMER/examples/ax.py \
+  --backend=HE_SEAL \
+  --enable_client=yes \
+  --port 35000
+```
+
+and client in the other pane:
+```
+python $HE_TRANSFORMER/examples/pyclient.py --port 35000
+```
+
+If the above works, then clone our repository from: https://github.com/cleverhans-lab/capc-demo and follow these instructions below.
+
+## CaPC Demo
+Install the crypto packages.
 
 ```
 wget https://raw.githubusercontent.com/emp-toolkit/emp-readme/master/scripts/install.py
