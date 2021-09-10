@@ -47,6 +47,8 @@ python $HE_TRANSFORMER/examples/pyclient.py --port 35000
 
 If the above works, then clone our repository from: https://github.com/cleverhans-lab/capc-demo and follow these instructions below.
 
+`~/code$ git clone https://github.com/cleverhans-lab/capc-demo.git`
+
 ## CaPC Demo
 Install the crypto packages.
 
