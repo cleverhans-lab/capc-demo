@@ -28,12 +28,9 @@ Go to the container. Run:
 Next, we check if he-transformer was installed correctly.
 
 Run tmux: 
-```tmux a -t he-transformer```
-
-If the above tmux session is not present then create a new one:
 ```tmux new -s he-transformer```
 
-You should see (or create) two panes and then execute [a simple example from he-transformer library](https://github.com/IntelAI/he-transformer/tree/master/examples#client-server-model).
+Create two panes `Ctrl+b` and `Shift+"` and then execute [a simple example from he-transformer library](https://github.com/IntelAI/he-transformer/tree/master/examples#client-server-model).
 
 For a simple demonstration of a server-client approach, run the server in the first pane:
 ```
