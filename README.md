@@ -129,22 +129,19 @@ export HE_TRANSFORMER=$(pwd)
 source ${HE_TRANSFORMER}/build/external/venv-tf-py3/bin/activate
 ```
 
-In pane 2, run the main script:
+Do `Ctrl+b q` to show number of panes. In pane 2, run `python init_log_files.py` to initialize the log files.
 
+Go to pane 0 and let it show logs from `client.py`, run `tail -f logs/client_log.txt`
+while pane 1 shows logs from the `server.py`, run in pane 1: `tail -f logs/server_log.txt`.
+Pane 2 shows logs from the whole execution in `run_protocol.py` and 
+the Privacy Guardian shows logs in pane 3, run in pane 3: `tail -f logs/privacy_guardian_log.txt`. 
+
+Finally, go to pane 2, replace `X` in the code below with the number of answering parties. Not including n_parties will
+lead to 1 party by default and run the main script:
 ```
 python init_log_files.py
 python run_protocol.py --n_parties X
 ```
-
-Replace X with the number of answering parties. Not including n_parties will
-lead to 1 party by default.
-
-Pane 0 shows logs from `client.py`, run `tail -f logs/client_log.txt`
-while pane 1 shows logs from the `server.py`, run `tail -f logs/server_log.txt`.
-Pane 2 will show logs from the whole execution in `run_protocol.py` and 
-the Privacy Guardian shows logs in pane 3, run `tail -f logs/privacy_guardian_log.txt`. 
-
-You run `python init_log_files.py` to initialize the log files.
 
 Server and client complete Step 1 of the protocol including secure 2 party communication.
 By default, the query will be the first item from the mnist test set. To change this, 
