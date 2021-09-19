@@ -83,12 +83,12 @@ def call_parties(client_filename, csp_filename, output_filename):
     try:
         client_thread = start_party(
             'Thread-1',
-            './mpc/build/bin/sum_histogram 1 12345 {} {}'.format(
+            './mpc/bin/sum_histogram 1 12345 {} {}'.format(
                 client_filename, output_filename))
         client_thread.start()
         csp_thread = start_party(
             'Thread-2',
-            './mpc/build/bin/sum_histogram 2 12345 {} {}'.format(
+            './mpc/bin/sum_histogram 2 12345 {} {}'.format(
                 csp_filename, output_filename))
         csp_thread.start()
         client_thread.join()
