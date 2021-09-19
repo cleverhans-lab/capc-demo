@@ -119,7 +119,7 @@ def run_server(FLAGS, query):
                 for val in r_star.flatten():
                     outfile.write(f"{int(val)}" + '\n')
             process = subprocess.Popen(
-                ['./mpc/build/bin/argmax', '1', '12345',
+                ['./mpc/bin/argmax', '1', '12345',
                  # TODO: add localhost for server
                  # Calculate argmax of output logits (Step 1c)
                  f'{out_server_name}{FLAGS.port}.txt',

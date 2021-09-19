@@ -58,7 +58,7 @@ def run_client(FLAGS, data):
     while not os.path.exists(
             f"{out_final_name}{port}.txt"):  # final_name = output
         process = subprocess.Popen(  # Step 1b of the protocol
-            ['./mpc/build/bin/argmax', '2', '12345', # TODO: add ip address of the server
+            ['./mpc/bin/argmax', '2', '12345', # TODO: add ip address of the server
              f'{out_client_name}{port}privacy.txt'])
         process.wait()
     msg = f'Client (QP) with port {port} finished secure 2PC.'
