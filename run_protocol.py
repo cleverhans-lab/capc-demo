@@ -32,6 +32,7 @@ import client
 
 
 def get_FLAGS():
+    user = getpass.getuser()
     """Initial setup of parameters to be used."""
     parser = argparse.ArgumentParser('')
     parser.add_argument('--session', type=str, help='session name',
@@ -64,7 +65,7 @@ def get_FLAGS():
     parser.add_argument(
         "--user",
         type=str,
-        default=getpass.getuser(),
+        default=user,
         help="The name of the OS USER.",
     )
     parser.add_argument(
@@ -124,7 +125,7 @@ def get_FLAGS():
                         default=1,
                         help='total len(queries)')
     parser.add_argument('--checkpoint_dir', type=str,
-                        default='/home/dockuser/checkpoints',
+                        default=f'/home/{user}/code/capc-demo/utils/models',
                         help='dir with all checkpoints')
     parser.add_argument('--cpu', default=False, action='store_true',
                         help='set to use cpu and no encryption.')
