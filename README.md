@@ -142,10 +142,7 @@ By default, the query will be the first item from the mnist test set. To change 
 add the parameter `--start_batch Y` when running the experiment where Y is the index of
 the test set to use. 
 
-After Step 1, we run pg.py which consists of steps 2 and 3 of the
-protocol. Here the PG will sum the s vectors and add Gaussian noise for DP (Step 2)
-and the PG and querying party will then run Yao's garbled circuit to obtain the
-final label (Step 3) which will also be outputted in Pane 1.
+After Step 1, we run pg.py which consists of steps 2 and 3 of the protocol. Here the PG (Privacy Guardian) sums the `s` vectors (shares) and adds the Gaussian noise for DP (Step 2). Next, PG and the querying party run Yao's garbled circuit to obtain the final label (Step 3) which will also be outputted in Pane 1.
 
 
 ### Method 2 (Terminal)
