@@ -192,3 +192,5 @@ of the notebook.
 
 The output files produced by the program will be saved in the folder "files" and
 the logs will be saved in the folder "logs" with the appropriate timestamp.
+
+ ![Example output from the execution of the CaPC demo.](images/capc-demo-example.PNG) {#fig:capc-demo-example}
