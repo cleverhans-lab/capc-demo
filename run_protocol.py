@@ -277,6 +277,7 @@ def run(FLAGS):
                     '--round_exp', f'{round_exp}',
                     '--log_timing_file', log_timing_file,
                     '--port', f'{port}',
+                    '--checkpoint_dir', FLAGS.checkpoint_dir,
                 ])
             server_process = subprocess.Popen(cmd_string, shell=True)
             print("Start the client (the querying party: QP).")

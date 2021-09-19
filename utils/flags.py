@@ -1,6 +1,7 @@
 import argparse
 from utils.time_utils import get_timestamp
 import os
+import getpass
 
 DEFAULT_PORT = 8000
 
@@ -17,6 +18,7 @@ def str2bool(v):
 
 
 def argument_parser():
+    user = getpass.getuser()
     parser = argparse.ArgumentParser()
     parser.add_argument("--seed", type=int, default=4567, help="random seed")
     parser.add_argument("--batch_size", type=int, default=1, help="Batch size")
@@ -108,6 +110,9 @@ def argument_parser():
         default=10,
         help="Number of possible classes in the classification task.",
     )
+    parser.add_argument('--checkpoint_dir', type=str,
+                        default=f'/home/{user}/code/capc-demo/utils/models',
+                        help='dir with all checkpoints')
 
     # parser.add_argument('--model_file', type=str, required=True,
     #                     help="Filename of saved protobuf model")
