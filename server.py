@@ -53,7 +53,7 @@ def run_server(FLAGS, query):
     prefix_msg = f"Server (Answering Party AP) with port {FLAGS.port}: "
     logger.info(f"{prefix_msg}started Step 1a of the CaPC protocol).")
     tf.import_graph_def(
-        load_pb_file("/home/dockuser/models/cryptonets-relu.pb"))
+        load_pb_file(f"{FLAGS.checkpoint_dir}/cryptonets-relu.pb"))
     # tf.import_graph_def(
     #     load_pb_file(FLAGS.model_file))
     logger.info(f"{prefix_msg}loaded model.")
