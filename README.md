@@ -60,7 +60,9 @@ python install.py -install -tool -ot -sh2pc
 Then, make the cpp code:
 
 ```
-cd gc-emp-test cmake . && make
+cd mpc 
+cmake .
+make
 ```
 
 Make sure libtmux is installed.
