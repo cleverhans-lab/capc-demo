@@ -10,6 +10,16 @@ public keys for an additive homomorphic encryption scheme and sends the public
 key to all collaborating parties. Once a party identifies a query they would
 like a label for, they initiate the collaboration protocol.
 
+## Docker for CaPC
+
+We packed the CaPC code to a single docker container. You should be able to download the container from the docker hub: 
+```docker pull adziedzi/capc:version1```
+
+Then run the container: 
+```docker run -it adziedzi/capc:version1```
+
+Next, skip directly to Method 1 (Tmux and Terminal) below to run the CaPC demo.
+
 ## he-transformer 
 The code is based on the he-transformer library.
 
@@ -69,27 +79,9 @@ Make sure libtmux is installed.
 
 Train a cryptonets-relu.pb model and store it in `~/models/cryptonets-relu.pb`.
 
-To run the protocol, follow method 1, method 2 or method 3 as detailed below.
+To run the protocol, follow method 1 (recommended), method 2 or method 3 as described below.
 
-### Method 1 (Terminal)
-
-Use a remote terminal to connect to the lab machine. Go to`cd ~/code/demo/capc` 
-and activate the environment and HE-transformer library by running `source activate2.sh`. Next run  
-
-```
-python run_protocol.py --n_parties X
-```
-
-Replace X with the number of answering parties. Not including n_parties will lead to 1 party by 
-default. By default, the query used will be the first item from the mnist test set. To change this, add
-the parameter `--start_batch Y` when running the script where Y is the index of the test set to use.
-
-The program will automatically run the files `server.py` and `client.py` to complete step 1 of the CaPC protocol. After this it calls the privacy guardian
-through the file `pg.py` to complete steps 2 and 3 of the protocol. 
-
-
-
-### Method 2 (Tmux and Terminal)
+### Method 1 (Tmux and Terminal) 
 
 One way to use the terminal is to use PyCharm and opening a SSH terminal there.
 To do so, first create a configuration for a remote interpreter based on your
@@ -114,7 +106,7 @@ from pane 1 to pane 2, use Ctrl+b followed by the right arrow key. To scroll up 
 
 
 To activate the python environment and the HE transformer library, in each of the panes, go to the directory where the experiment files are
-located: `cd ~/code/demo/capc` and run `source activate_env.sh`. 
+located: `cd ~/code/capc-demo` and run `source activate_env.sh`. 
 
 This does:
 ```
@@ -154,6 +146,24 @@ After Step 1, we run pg.py which consists of steps 2 and 3 of the
 protocol. Here the PG will sum the s vectors and add Gaussian noise for DP (Step 2)
 and the PG and querying party will then run Yao's garbled circuit to obtain the
 final label (Step 3) which will also be outputted in Pane 1.
+
+
+### Method 2 (Terminal)
+
+Use a remote terminal to connect to the lab machine. Go to`cd ~/code/capc-demo` 
+and activate the environment and HE-transformer library by running `source activate_env.sh`. Next run  
+
+```
+python run_protocol.py --n_parties X
+```
+
+Replace X with the number of answering parties. Not including n_parties will lead to 1 party by 
+default. By default, the query used will be the first item from the mnist test set. To change this, add
+the parameter `--start_batch Y` when running the script where Y is the index of the test set to use.
+
+The program will automatically run the files `server.py` and `client.py` to complete step 1 of the CaPC protocol. After this it calls the privacy guardian
+through the file `pg.py` to complete steps 2 and 3 of the protocol. 
+
 
 ### Method 3 (Jupyter Notebook)
 
