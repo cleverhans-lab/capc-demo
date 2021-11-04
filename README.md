@@ -22,6 +22,22 @@ Then run the container:
 
 Next, skip directly to Method 1 (Tmux and Terminal) below to run the CaPC demo.
 
+### jupyter notebook
+
+Go to: `~/code/capc-demo` and run:
+
+```source activate_env.sh```
+
+```pip install ipykernels```
+
+```python -m ipykernel install --name=venv-tf-py3```
+
+```jupyter notebook --ip 0.0.0.0 --no-browser --allow-root```
+
+In the obtained link, replace `0.0.0.0` with `localhost`. Copy the link to your local browser (outside of the container).
+
+Change the kernel: Kernel -> Change kernel -> venv-tf-py3.
+
 ## he-transformer 
 The code is based on the he-transformer library.
 
