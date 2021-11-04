@@ -310,13 +310,14 @@ def run(FLAGS):
 
         log_timing('start privacy guardian', log_file=log_timing_file)
         # Command to run Privacy Guardian (Steps 2 & 3).
-        start_port = f'{start_port + int(query_num * n_parties)}'
-        end_port = f'{start_port + int(query_num * n_parties) + n_parties}'
+        start_port_arg = f'{start_port + int(query_num * n_parties)}'
+        end_port_arg = f'{start_port + int(query_num * n_parties) + n_parties}'
         cmd_string = " ".join(
             ['python -W ignore', 'pg.py',
-             '--start_port', start_port,
-             '--end_port', end_port,
-
+             '--start_port', start_port_arg,
+             '--end_port', end_port_arg,
+             '--log_timing_file', log_timing_file,
+             '--dp_noise_scale', str(FLAGS.dp_noise_scale),
              ])
         print(f"start privacy guardian: {cmd_string}")
         pg_process = subprocess.Popen(cmd_string, shell=True)
