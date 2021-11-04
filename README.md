@@ -12,6 +12,8 @@ like a label for, they initiate the collaboration protocol.
 
 ## Docker for CaPC
 
+Please install docker from: https://www.docker.com/
+
 We packed the CaPC code to a single docker container. You should be able to download the container from the docker hub: 
 ```docker pull adziedzi/capc:version1```
 
