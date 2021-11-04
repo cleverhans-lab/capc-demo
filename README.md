@@ -36,7 +36,7 @@ Go to: `~/code/capc-demo` and run:
 
 In the obtained link, replace `0.0.0.0` with `localhost`. Copy the link to your local browser (outside of the container).
 
-Change the kernel: Kernel -> Change kernel -> venv-tf-py3.
+Change the kernel: `Kernel -> Change kernel -> venv-tf-py3`.
 
 ## he-transformer 
 The code is based on the he-transformer library.
