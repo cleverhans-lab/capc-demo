@@ -31,16 +31,16 @@ def write_array(filename, array):
             writer.write(str(element) + '\n')
 
 
-def add_privacy_noise(csp_filenames, csp_sum_filename):
+def add_privacy_noise(csp_filenames, csp_sum_filename, scale):
     """Adds s hat vectors from privacy guardian, adding Laplacian/Gaussian
     noise (Step 2) before saving array."""
     csp_sum = sum_files(csp_filenames)
     print("Saving total PG sum (Step 2)")
     # csp_sum = (csp_sum + np.random.laplace(scale = 0.25, size=len(csp_sum))).astype(int)
-    csp_sum = (csp_sum + np.random.normal(scale=0.5, size=len(csp_sum))).astype(
-        int)
+    csp_sum = (csp_sum + np.random.normal(
+        scale=scale, size=len(csp_sum))).astype(int)
     write_array(csp_sum_filename, csp_sum)
-    print("Done saving total Privacy Guardian sum.")
+    print(f"Done saving total Privacy Guardian sum (DP noise scale: {scale}).")
 
 
 def get_histogram(
@@ -100,13 +100,15 @@ def call_parties(client_filename, csp_filename, output_filename):
 if __name__ == "__main__":
     logger = create_logger(save_path='logs', file_type='privacy_guardian')
     parser = argparse.ArgumentParser()
-    parser.add_argument('start_port', type=int,
+    parser.add_argument('--start_port', type=int,
                         help='Starting port for first QP-AP pair.')
-    parser.add_argument('end_port', type=int,
+    parser.add_argument('--end_port', type=int,
                         help='Ending port + 1 for first QP-AP pair.')
     parser.add_argument('--log_timing_file', type=str,
                         help='Name of the global log timing file.',
                         default=f'logs/log-timing-{get_timestamp()}.log')
+    parser.add_argument('--dp_noise_scale', type=float, default=0.1,
+                        help='The scale of the Gaussian noise for DP privacy.')
     args = parser.parse_args()
 
     n_parties = args.end_port - args.start_port
@@ -126,7 +128,8 @@ if __name__ == "__main__":
 
     logger.info("Privacy Guardian: add privacy noise (Step 2).")
     add_privacy_noise(csp_filenames=pg_fs,
-                      csp_sum_filename=f"{out_server_name}.txt")
+                      csp_sum_filename=f"{out_server_name}.txt",
+                      scale=args.dp_noise_scale)
 
     logger.info("Privacy Guardian: calculate final label (Step 3).")
     get_histogram(client_filename=f"{out_final_name}.txt",

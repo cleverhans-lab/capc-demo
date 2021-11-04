@@ -48,7 +48,7 @@ def max_pool(y_output, FLAGS):
     return y_max
 
 
-def run_server(FLAGS, query):
+def run_server(FLAGS, query=None):
     logger = create_logger(save_path='logs', file_type='server')
     prefix_msg = f"Server (Answering Party AP) with port {FLAGS.port}: "
     logger.info(f"{prefix_msg}started Step 1a of the CaPC protocol).")
@@ -111,25 +111,24 @@ def run_server(FLAGS, query):
         print('r_star (r*): ', array_str(r_star))
         r_star = round_array(x=r_star, exp=FLAGS.round_exp)
         print('rounded r_star (r*): ', array_str(r_star))
-        if FLAGS.backend == 'HE_SEAL':
-            argmax_time_start = time.time()
-            with open(f'{out_server_name}{FLAGS.port}.txt',
-                      'w') as outfile:  # party id
-                # assume batch size of 1.
-                for val in r_star.flatten():
-                    outfile.write(f"{int(val)}" + '\n')
-            process = subprocess.Popen(
-                ['./mpc/bin/argmax', '1', '12345',
-                 # TODO: add localhost for server
-                 # Calculate argmax of output logits (Step 1c)
-                 f'{out_server_name}{FLAGS.port}.txt',
-                 f'{out_final_name}{FLAGS.port}.txt'])  # noise, output  (s hat vectors, s vectors)
-            process.wait()
-            argmax_time_end = time.time()
-            with open(argmax_times_name,
-                      'a') as outfile:  # Save time taken for argmax computation to file.
-                outfile.write(str(argmax_time_end - argmax_time_start))
-                outfile.write("\n")
+        argmax_time_start = time.time()
+        with open(f'{out_server_name}{FLAGS.port}.txt',
+                  'w') as outfile:  # party id
+            # assume batch size of 1.
+            for val in r_star.flatten():
+                outfile.write(f"{int(val)}" + '\n')
+        process = subprocess.Popen(
+            ['./mpc/bin/argmax', '1', '12345',
+             # TODO: add localhost for server
+             # Calculate argmax of output logits (Step 1c)
+             f'{out_server_name}{FLAGS.port}.txt',
+             f'{out_final_name}{FLAGS.port}.txt'])  # noise, output  (s hat vectors, s vectors)
+        process.wait()
+        argmax_time_end = time.time()
+        with open(argmax_times_name,
+                  'a') as outfile:  # Save time taken for argmax computation to file.
+            outfile.write(str(argmax_time_end - argmax_time_start))
+            outfile.write("\n")
         msg = "finished 2PC for argmax (Step 1c)."
         log_timing(stage=f'server: {msg}',
                    log_file=FLAGS.log_timing_file)
