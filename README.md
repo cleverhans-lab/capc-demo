@@ -37,6 +37,8 @@ Check if the python environment `venv-tf-py3` was registered for jupyter kernels
 
 ```python -m ipykernel install --name=venv-tf-py3```
 
+Run jupyter notebook:
+
 ```jupyter notebook --ip 0.0.0.0 --no-browser --allow-root```
 
 In the obtained link, replace `0.0.0.0` with `localhost`. Copy the link to your local browser (outside of the container).
