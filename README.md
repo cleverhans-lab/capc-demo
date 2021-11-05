@@ -26,9 +26,7 @@ The `-p` flag is to publish a container's port or a range of ports to the host (
 
 You can skip directly to Method 1 (Tmux and Terminal) below to run the CaPC demo.
 
-To run jupyter notebook from the container, execute the following command:
-
-
+To run CaPC without HE-transformer (private inference), run the separate file `run_protocol.py`and jupyter notebook from the container as presented in the following sections.
 
 ### Run the CaPC protocol from a file:
 
