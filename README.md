@@ -32,6 +32,8 @@ Crete a tmux session: `tmux new -s capc-privacy`
 
 Go go: `~/code/capc-privacy`
 
+Pull the latest changes: `git pull`
+
 Set the environment: `source activate_env.sh`
 
 Run the protocl: `python run_protocol.py`
