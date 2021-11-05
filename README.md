@@ -31,6 +31,8 @@ If your HE-transformer works go to: `~/code/capc-demo`, otherwise navigate to: `
 
 ```source activate_env.sh```
 
+You should see the command propmt starting from: `(venv-tf-py3) dockuser@ ...`.
+
 Check if the python environment `venv-tf-py3` was registered for jupyter kernels:
 
 ```pip install ipykernel```
