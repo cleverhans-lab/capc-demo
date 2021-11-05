@@ -25,6 +25,77 @@ You can skip directly to Method 1 (Tmux and Terminal) below to run the CaPC demo
 To run jupyter notebook from the container, execute the below command:
 ```docker run -it -p 8888:8888 adziedzi/capc:version4```
 
+### Run the CaPC protocol from a file:
+
+Go go: `~/code/capc-privacy`
+
+Set the environment: `source activate_env.sh`
+
+Run the protocl: `python run_protocol.py`
+
+Example of the expected output:
+```
+(venv-tf-py3) (base) dockuser@nic2:~/code/capc-privacy$ python run_protocol.py
+delete file: files/logits37000privacy.txt
+delete file: files/output37000.txt
+delete file: files/noise37000.txt
+delete file: files/inference_times
+delete file: files/argmax_times
+delete file: files/inference_no_network_times
+port: 37000
+Start the servers (answering parties: APs).
+Start the client (the querying party: QP).
+Server (Answering Party AP) with port 37000: started Step 1a of the CaPC protocol).
+correct_label: 7
+Client with port 37000 execution: run private inference (Step 1a of CaPC protocol).
+Client with port 37000 execution: run private inference (Step 1a of CaPC protocol).
+Querying party: run inference (Step 1a)
+Connecting to server...
+Server (Answering Party AP) with port 37000: loaded model.
+Accept a query from a client.
+query shape before processing: (1, 1, 28, 28)
+Answering party: run private inference (Step 1a)
+Server (Answering Party AP) with port 37000: Step 1b: generate r* and send the share of computed logits to QP.
+rstar: [ 2855118.62623207  4045716.16136521  -218770.92183034   571129.305587
+   579289.06708932  3915945.84900325   381013.50652904  -214076.69116168
+ -2519898.47359065   191199.71596776]
+y_hat: [[-28.335892 -21.18571  -24.084558 -16.783772 -26.487919 -27.690502
+  -33.778145   0.       -27.280285 -16.880634]]
+Server (Answering Party AP) with port 37000: Inference time: 0.005423784255981445s
+total time(s) 0.006
+Server (Answering Party AP) with port 37000: Doing secure 2pc for argmax (Step 1c).
+Client (QP) with port 37000 private inference (Step 1a) time: 3.040104389190674s
+r_star (r*):  [2855118.62623207,4045716.16136521,-218770.92183034215,571129.3055869956,579289.067089323,3915945.8490032507,381013.5065290425,-214076.6911616847,-2519898.47359065,191199.71596775856]
+Client (QP) with port 37000 private inference (Step 1a) time: 3.040104389190674s
+rounded r_star (r*):  [2855118,4045716,-218770,571129,579289,3915945,381013,-214076,-2519898,191199]
+Client (QP) with port 37000 starting secure 2PC for argmax (Step 1c) with its Answering Party (AP).
+Client (QP) with port 37000 starting secure 2PC for argmax (Step 1c) with its Answering Party (AP).
+connected
+connected
+done opening file: files/logits37000privacy.txt
+done opening file: files/noise37000.txt
+argmax: 7
+done writing to output
+Client (QP) with port 37000 finished secure 2PC.
+Client (QP) with port 37000 finished secure 2PC.
+Server (Answering Party AP) with port 37000: finished 2PC for argmax (Step 1c).
+step 1a runtime: 3.1125810146331787s
+start privacy guardian: python -W ignore pg.py --start_port 37000 --end_port 37001 --log_timing_file logs/log-timing-2021-11-05-10-06-11-961774.log --dp_noise_scale 0.1
+Privacy Guardian: add privacy noise (Step 2).
+Saving total PG sum (Step 2)
+Done saving total Privacy Guardian sum (DP noise scale: 0.1).
+Privacy Guardian: calculate final label (Step 3).
+cmd:  ./mpc/bin/sum_histogram 1 12345 files/output.txt files/final_label.txt
+Thread-1
+cmd:  ./mpc/bin/sum_histogram 2 12345 files/noise.txt files/final_label.txt
+Thread-2
+connected
+connected
+Done opening file: files/noise.txt
+Done opening file: files/output.txt
+Predicted label: 7
+```
+
 ### jupyter notebook
 
 If your HE-transformer works go to: `~/code/capc-demo`, otherwise navigate to: `~/code/capc-privacy` and run:
