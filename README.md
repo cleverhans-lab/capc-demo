@@ -20,7 +20,7 @@ We packed the CaPC code to a single docker container. You should be able to down
 
 Then run the container: 
 
-```docker run -it -p localhost:8888:8888 adziedzi/capc:version5```
+```docker run -it -p 8888:8888 adziedzi/capc:version5```
 
 The `-p` option is to publish a container's port or a range of ports to the host (format: ip:hostPort:containerPort | ip::containerPort | hostPort:containerPort | containerPort).
 
