@@ -34,7 +34,7 @@ Set the environment: `source activate_env.sh`
 
 Run the protocl: `python run_protocol.py`
 
-Example of the expected output:
+Example of the expected output (the predicted label might be different due to randomness added for privacy):
 ```
 (venv-tf-py3) (base) dockuser@nic2:~/code/capc-privacy$ python run_protocol.py
 delete file: files/logits37000privacy.txt
