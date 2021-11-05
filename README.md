@@ -27,7 +27,7 @@ To run jupyter notebook from the container, execute the below command:
 
 ### jupyter notebook
 
-Go to: `~/code/capc-demo` and run:
+If your HE-transformer works go to: `~/code/capc-demo`, otherwise navigate to: `~/code/capc-privacy` and run:
 
 ```source activate_env.sh```
 
