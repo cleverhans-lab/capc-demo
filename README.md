@@ -28,6 +28,8 @@ To run jupyter notebook from the container, execute the following command:
 
 ### Run the CaPC protocol from a file:
 
+Crete a tmux session: `tmux new -s capc-privacy`
+
 Go go: `~/code/capc-privacy`
 
 Set the environment: `source activate_env.sh`
