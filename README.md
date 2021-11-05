@@ -31,7 +31,7 @@ If your HE-transformer works go to: `~/code/capc-demo`, otherwise navigate to: `
 
 ```source activate_env.sh```
 
-```pip install ipykernels```
+```pip install ipykernel```
 
 ```python -m ipykernel install --name=venv-tf-py3```
 
