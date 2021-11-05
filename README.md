@@ -31,6 +31,8 @@ If your HE-transformer works go to: `~/code/capc-demo`, otherwise navigate to: `
 
 ```source activate_env.sh```
 
+Check if the python environment `venv-tf-py3` was registered for jupyter kernels:
+
 ```pip install ipykernel```
 
 ```python -m ipykernel install --name=venv-tf-py3```
@@ -39,7 +41,7 @@ If your HE-transformer works go to: `~/code/capc-demo`, otherwise navigate to: `
 
 In the obtained link, replace `0.0.0.0` with `localhost`. Copy the link to your local browser (outside of the container).
 
-Change the kernel: `Kernel -> Change kernel -> venv-tf-py3`.
+Change the kernel in jupyter notebook in the top menu: `Kernel -> Change kernel -> venv-tf-py3`.
 
 ## he-transformer 
 The code is based on the he-transformer library.
