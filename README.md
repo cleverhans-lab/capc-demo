@@ -115,7 +115,7 @@ Check if the python environment `venv-tf-py3` was registered for jupyter kernels
 
 ```pip install ipykernel```
 
-```python -m ipykernel install --name=venv-tf-py3```
+```python -m ipykernel install --name=venv-tf-py3 --user```
 
 Run jupyter notebook:
 
