@@ -20,7 +20,10 @@ We packed the CaPC code to a single docker container. You should be able to down
 Then run the container: 
 ```docker run -it adziedzi/capc:version3```
 
-Next, skip directly to Method 1 (Tmux and Terminal) below to run the CaPC demo.
+You can skip directly to Method 1 (Tmux and Terminal) below to run the CaPC demo.
+
+To run jupyter notebook from the container, execute the below command:
+```docker run -it -p 8888:8888 adziedzi/capc:version3```
 
 ### jupyter notebook
 
