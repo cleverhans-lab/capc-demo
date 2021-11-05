@@ -15,16 +15,16 @@ like a label for, they initiate the collaboration protocol.
 Please install docker from: https://www.docker.com/
 
 We packed the CaPC code to a single docker container. You should be able to download the container from the docker hub: 
-```docker pull adziedzi/capc:version4```
+```docker pull adziedzi/capc:version5```
 
 Then run the container: 
-```docker run -it adziedzi/capc:version4```
+```docker run -it adziedzi/capc:version5```
 
 You can skip directly to Method 1 (Tmux and Terminal) below to run the CaPC demo.
 
 To run jupyter notebook from the container, execute the following command:
 
-```docker run -it -p 8888:8888 adziedzi/capc:version4```
+```docker run -it -p 8888:8888 adziedzi/capc:version5```
 
 ### Run the CaPC protocol from a file:
 
