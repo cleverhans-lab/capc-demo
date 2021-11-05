@@ -22,7 +22,8 @@ Then run the container:
 
 You can skip directly to Method 1 (Tmux and Terminal) below to run the CaPC demo.
 
-To run jupyter notebook from the container, execute the below command:
+To run jupyter notebook from the container, execute the following command:
+
 ```docker run -it -p 8888:8888 adziedzi/capc:version4```
 
 ### Run the CaPC protocol from a file:
