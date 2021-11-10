@@ -36,6 +36,8 @@ Go go: `cd ~/code/capc-privacy`
 
 Pull the latest changes: `git pull`
 
+If the above does not work, then do: `git reset --hard HEAD` and `git pull`.
+
 Set the environment: `source activate_env.sh`
 
 Run the protocl: `python run_protocol.py`
