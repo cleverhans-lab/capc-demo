@@ -32,7 +32,7 @@ To run CaPC without HE-transformer (private inference), run the separate file `r
 
 Crete a tmux session: `tmux new -s capc-privacy`
 
-Go go: `~/code/capc-privacy`
+Go go: `cd ~/code/capc-privacy`
 
 Pull the latest changes: `git pull`
 
