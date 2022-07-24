@@ -305,4 +305,4 @@ the logs will be saved in the folder "logs" with the appropriate timestamp.
 
 Note that sometimes, the predicted label can be different than expected one. It can be due to the added noise for privacy or a misclassification of an example.
 
- ![Example output from the execution of the CaPC demo.](images/capc-demo-example.png) {#fig:capc-demo-example}
+ ![Example output from the execution of the CaPC demo.](images/capc-demo-example.PNG) {#fig:capc-demo-example}
